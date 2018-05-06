@@ -70,16 +70,22 @@
                         <template is="dom-if" if="{{!show_params}}">
                             <paper-button class="grey" on-tap="_toggleParams">+ Params</paper-button>
                         </template>
-                        <template is="dom-if" if="{{show_params}}">
-                            <paper-button class="grey" on-tap="_toggleParams">Close</paper-button>
-                        </template>
                     </div>
                 </div>
                 <div style="margin-top:-200px;">
                     <template is="dom-if" if="{{show_params}}">
                         <div>
-                            <h6>Params</h6>
+                            <div class="horizontal">
+                                <h6>Param: Query</h6>
+                                <paper-button class="grey" on-tap="_toggleParams">Close</paper-button>
+                            </div>
                             <juicy-jsoneditor json="{{params}}" mode="code"></juicy-jsoneditor>
+                            
+                            <div class="horizontal">
+                                <h6>Param: Body</h6>
+                                <paper-button class="grey" on-tap="_toggleParams">Close</paper-button>
+                            </div>
+                            <juicy-jsoneditor json="{{body}}" mode="code"></juicy-jsoneditor>
                         </div>
                     </template>
                     <div class="horizontal" style="margin-top:24px;">
@@ -155,8 +161,9 @@
 
                 var d = this.get('_d');
                 var path = this.$.APIpath;
-                var params = this.get('params');
-                console.log('_runCall', d.method.selected, path.value, params);
+                var query = this.get('params') || {};
+                var body = this.get('body') || {};
+                console.log('_runCall', d.method.selected, path.value, query, body);
 
                 var filename = 'API_' + d.method.selected + path.value.split("/").join("_")
                 this.set('filename', filename);
@@ -168,7 +175,7 @@
                 this.set('loading', true);
 
 
-                helpers.callAPI(d.method.selected, path.value, params, {}, function(req) {
+                helpers.callAPI(d.method.selected, path.value, query, body, function(req) {
                     this.have_data = false;
 
                     try {
@@ -180,7 +187,6 @@
                         } else {
                             console.log(req.status, req);
                             this.set('data', req);
-
                         };
 
                         this.set('have_data', true);
