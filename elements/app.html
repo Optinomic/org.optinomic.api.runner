@@ -161,8 +161,9 @@
 
                 var d = this.get('_d');
                 var path = this.$.APIpath;
-                var query = JSON.parse(this.get('params') || '{}');
-                var body = JSON.parse(this.get('body') || '{}');
+                var query = Object.assign({}, this.get('params'));
+                var body = Object.assign({}, this.get('body'));
+
                 console.log('_runCall: ', d.method.selected + ' ' + path.value, query, body);
 
                 var filename = 'API_' + d.method.selected + path.value.split("/").join("_")
@@ -191,7 +192,8 @@
                         this.set('have_data', true);
 
                     } catch (err) {
-                        alert("Error: Check your entries.  Error-Message:" + err.message);
+                        alert("callAPI Error:" + err.message);
+                        console.error('callAPI Error:', err);
                     }
 
                     this.loading = false;
@@ -218,6 +220,7 @@
 
             this.set('path', '/patients');
             this.set('params', {});
+            this.set('body', {});
 
             d.init_done = true;
             this.set('_d', d);
