@@ -37,7 +37,7 @@
             <div class="request_container">
                 <div class="horizontal">
                     <div class="flex">
-                        <h1>Request</h1>
+                        <h1>Postman</h1>
                     </div>
                     <div class="field">
                         <a href="https://doc.optinomic.org/V2/Developers/api.html" target="_blank">API-Documentation</a>
@@ -161,9 +161,9 @@
 
                 var d = this.get('_d');
                 var path = this.$.APIpath;
-                var query = this.get('params') || {};
-                var body = this.get('body') || {};
-                console.log('_runCall', d.method.selected, path.value, query, body);
+                var query = JSON.parse(this.get('params') || '{}');
+                var body = JSON.parse(this.get('body') || '{}');
+                console.log('_runCall: ', d.method.selected + ' ' + path.value, query, body);
 
                 var filename = 'API_' + d.method.selected + path.value.split("/").join("_")
                 this.set('filename', filename);
@@ -171,7 +171,6 @@
 
                 this.set('data', null);
                 this.set('have_data', false);
-
                 this.set('loading', true);
 
 
