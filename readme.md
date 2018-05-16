@@ -3,6 +3,16 @@
 
 Run [API-Commands](https://doc.optinomic.org/V2/Developers/api.html)
 
+
+# Example Commands
+/calculations/com.optinomic.apps.whoqol/phys_psych_calculation/recompute
+
+
+/patients/1/calculations/ch.suedhang.apps.actinfo_ein/actinfo_ein
+
+/patients/1/calculations/ch.suedhang.apps.actinfo_ein/actinfo_ein/recompute
+
+
 # Anschrift
 
 ![image](http://www.ottiger.org/optinomic_logo/optinomic_logo_small.png)     
