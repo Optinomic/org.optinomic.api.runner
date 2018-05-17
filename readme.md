@@ -3,15 +3,14 @@
 
 Run [API-Commands](https://doc.optinomic.org/V2/Developers/api.html)
 
-
 # Example Commands
-/calculations/com.optinomic.apps.whoqol/phys_psych_calculation/recompute
 
+Working:
+GET  /patients/1/calculations/ch.suedhang.apps.actinfo_ein/actinfo_ein
 
-/patients/1/calculations/ch.suedhang.apps.actinfo_ein/actinfo_ein
-
-/patients/1/calculations/ch.suedhang.apps.actinfo_ein/actinfo_ein/recompute
-
+NOT YET Working:
+POST  /calculations/com.optinomic.apps.whoqol/phys_psych_calculation/recompute
+POST  /patients/1/calculations/ch.suedhang.apps.actinfo_ein/actinfo_ein/recompute
 
 # Anschrift
 
