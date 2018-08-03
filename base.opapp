@@ -6,7 +6,7 @@ version = __opapp_version()
 type = user
 
 [description]
-Run API-Commands.
+Run Optinomic API-Calls. 
 
 [developer]
 first_name = Beat
