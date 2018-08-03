@@ -1,7 +1,7 @@
 [module]
 id = __opapp_identifier()
 name = Postman
-short_description = Run Optinomic API-Calls
+short_description = Run - Optinomic API-Calls
 version = __opapp_version()
 type = user
 
